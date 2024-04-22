@@ -1,21 +1,30 @@
 import { useState } from "react";
 import "./App.css";
 
+// example of use state hook & change propagation.
+// max value you can increase is 20
+// min value you can decrease is 0
 function App() {
   let [counter, setCounter] = useState(0);
 
   const addValue = () => {
     console.log("add value");
     // counter++;
-    setCounter(counter + 1);
+    if (counter <= 20) {
+      setCounter(counter + 1);
+    }
+
     console.log(counter);
   };
 
-  const removeValue = () =>{
+  const removeValue = () => {
     console.log("remove value");
-    setCounter(counter - 1);
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
+
     console.log(counter);
-  }
+  };
 
   return (
     <>
